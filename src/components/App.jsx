@@ -1,20 +1,12 @@
 import React, { useState } from "react";
 
 function App() {
-  const [headingText, setHeadingText] = useState("Hello");
-
-  const [mouseOver, setMouseOver] = useState(false);
-
-  const [displayFName, setDisplayFName] = useState("");
-
   const [name, setName] = useState({
     fName: "",
     lName: "",
   });
 
   function handleClick(event) {
-    setHeadingText("Submitted");
-    setDisplayFName(name.fName);
     event.preventDefault();
   }
 
@@ -40,18 +32,10 @@ function App() {
     });
   }
 
-  function handleMouseOver() {
-    setMouseOver(true);
-  }
-  function handleMouseOut() {
-    setMouseOver(false);
-  }
-
   return (
     <div className="container">
       <h1>
-        {headingText} {headingText === "Hello" ? " " : " by "}
-        {name.fName} {name.lName}
+        Hello {name.fName} {name.lName}
       </h1>
       <form onSubmit={handleClick}>
         <input
@@ -68,13 +52,7 @@ function App() {
           placeholder="What's your last name?"
           value={name.lName}
         />
-        <button
-          style={{ backgroundColor: mouseOver ? "black" : "white" }}
-          onMouseOver={handleMouseOver}
-          onMouseOut={handleMouseOut}
-        >
-          Submit
-        </button>
+        <button>Submit</button>
       </form>
     </div>
   );
