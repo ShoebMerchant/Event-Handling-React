@@ -11,27 +11,9 @@ function App() {
   }
 
   function handleChange(event) {
-    const { value, name } = event.target;
-    // console.log(name, value);
-    /**
-     * Do not use event inside setName() because
-     * it's a synthetic event
-     */
-    setName(prevValue => {
-      if (name === "fName") {
-        return {
-          fName: value,
-          lName: prevValue.lName,
-        };
-      } else if (name === "lName") {
-        return {
-          fName: prevValue.fName,
-          lName: value,
-        };
-      }
-    });
+    const { name, value } = event.target;
+    setContact(prevValue => ({ ...prevValue, [name]: value }));
   }
-
   return (
     <div className="container">
       <h1>
